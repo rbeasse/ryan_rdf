@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .button {
+    @apply bg-secondary;
+    @apply border;
+    @apply cursor-pointer;
+    @apply border-border;
+    @apply rounded;
+    @apply uppercase;
+    @apply font-bold;
+    @apply w-fit;
+    @apply flex;
+    @apply items-center;
+    @apply h-8;
+    @apply px-2;
+    @apply hover:bg-border;
+  }
+
+  .cm-editor {
+    @apply h-28;
+    @apply border;
+    @apply bg-secondary;
+    @apply border-border;
+    @apply cursor-text;
+  }
+
+  /* Need a custom override for one of the code mirror !important calls */
+  .cm-editor .cm-content .cm-line {
+    @apply caret-gray-300 !important;
+  }
+
+  .cm-editor .cm-selectionBackground {
+    @apply bg-gray-900 !important;
+  }
+
+  .cm-editor .cm-activeLine {
+    @apply bg-border;
+  }
+
+  .cm-editor .cm-gutters {
+    @apply bg-border;
+    @apply text-gray-300;
+    @apply border-0;
+    @apply mr-1;
+  }
+
+  .cm-editor .cm-activeLineGutter {
+    @apply bg-border;
+  }
+
+  .icon svg {
+    @apply w-4;
+    @apply h-4;
+
+    @apply fill-gray-300
+  }
+}

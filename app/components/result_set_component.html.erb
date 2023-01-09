@@ -1,0 +1,23 @@
+<hr class='border-t border-dashed border-border'>
+<div class='text-sm bg-border my-2 py-2 px-4'>Found <%=@rows.size%> results.</div>
+<table class="w-full text-sm text-left border border-border">
+  <thead class="text-xs uppercase bg-border">
+    <tr>
+      <%- @headers.each do |header| %>
+        <th class="px-3 py-2">
+          <%= header %>
+        </th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <%- @rows.each do |row| %>
+    <tr class="bg-secondary border-b border-border hover:bg-border">
+      <%- row.each do |cell| %>
+        <td class="px-3 py-2">
+          <%= cell %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

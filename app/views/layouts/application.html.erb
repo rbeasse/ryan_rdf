@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RYAN RDF</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body class='bg-primary text-gray-300'>
+    <div class='pl-4 bg-secondary border-b border-border uppercase font-bold flex items-center h-8'>
+      <span class='icon'><%= svg(:table) %></span>
+      <span class='ml-3'>Ryan RDF</span>
+    </div>
+
+    <section class="mx-auto my-5 w-4/5">
+      <%= yield %>
+    </section>
+  </body>
+</html>
