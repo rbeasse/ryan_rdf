@@ -11,9 +11,14 @@
   </head>
 
   <body class='bg-primary text-gray-300'>
-    <div class='pl-4 bg-secondary border-b border-border uppercase font-bold flex items-center h-8'>
-      <span class='icon'><%= svg(:table) %></span>
-      <span class='ml-3'>Ryan RDF</span>
+    <div class='bg-secondary border-b border-border uppercase font-bold flex items-center justify-between h-8'>
+      <div class='flex items-center ml-4'>
+        <span class='icon'><%= svg(:table) %></span>
+        <span class='ml-3'><a href="<%= root_path %>">Ryan RDF</a></span>
+      </div>
+      <div>
+        <%= render GraphMenuComponent.new %>
+      </div>
     </div>
 
     <section class="mx-auto my-5 w-4/5">

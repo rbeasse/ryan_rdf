@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import MenuController from "./menu_controller"
+application.register("menu", MenuController)
+
 import SparqlController from "./sparql_controller"
 application.register("sparql", SparqlController)

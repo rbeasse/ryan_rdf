@@ -1,23 +1,18 @@
 import { Controller } from "@hotwired/stimulus";
-
-import { basicSetup } from "codemirror";
-import { EditorView, keymap } from "@codemirror/view";
-import { indentWithTab } from "@codemirror/commands";
+import { editor } from "../lib/codemirror";
 
 export default class extends Controller {
   static targets = ["query", "results"];
+  static values = { url: String };
 
   connect() {
-    this.editor = new EditorView({
-      extensions: [basicSetup, keymap.of([indentWithTab])],
+    this.editor = editor({
       parent: this.queryTarget,
       doc: "SELECT * WHERE { ?subject ?predicate ?object } LIMIT 5",
     });
   }
 
-  query(event) {
-    event.preventDefault();
-
+  query() {
     const self = this;
     const sparqlQuery = self.editor.state.doc.text.join("\n");
     const csrfToken = document.querySelector("[name='csrf-token']").content;
@@ -26,7 +21,9 @@ export default class extends Controller {
       return;
     }
 
-    fetch("/sparql", {
+    self.resultsTarget.innerHTML = `<span class="loader"></span>`;
+
+    fetch(this.urlValue, {
       method: "POST",
       headers: {
         "X-CSRF-Token": csrfToken,

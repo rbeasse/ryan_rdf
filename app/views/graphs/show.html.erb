@@ -1,0 +1,16 @@
+<h2><%= @graph.name %></h2>
+
+<%= render ListComponent.new do |list| %>
+  <% list.with_item('Triples', @graph.triples.size) %>
+  <% list.with_item('Generated', @graph.generated_at) %>
+  <% list.with_item('Original File', @graph.original_file) %>
+<% end %>
+
+<div class="flex justify-between">
+  <div class="flex">
+    <a href="<%= query_path(@graph) %>" class="mr-2 button bg-blue-800 hover:bg-blue-900">Query</a>
+    <a href="<%= export_path(@graph) %>" class="mr-2 button bg-orange-800 hover:bg-orange-900">Export triples</a>
+  </div>
+
+  <%= button_to "delete", @graph, class: 'button bg-red-800 hover:bg-red-900', method: :delete %>
+</div>

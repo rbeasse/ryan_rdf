@@ -1,0 +1,6 @@
+<section data-controller="sparql" data-sparql-url-value='<%= sparql_path(@graph) %>'>
+  <div data-sparql-target="query"></div>
+  <div data-action="click->sparql#query" class="button my-2">EXECUTE</div>
+
+  <div data-sparql-target="results"></div>
+</section>

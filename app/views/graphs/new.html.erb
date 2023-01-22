@@ -1,0 +1,13 @@
+<h2>Create a new graph</h2>
+<div class="px-1 py-2">
+  <%= form_for(@graph) do |form| %>
+    <%= render "error_messages", resource: @graph %>
+    <%= form.label(:name) %>
+    <%= form.text_field(:name) %>
+
+    <%= form.label(:graph_file) %>
+    <%= form.file_field(:graph_file, accept: '.rdf') %>
+
+    <%= form.submit %>
+  <% end %>
+</div>

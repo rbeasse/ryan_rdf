@@ -4,57 +4,91 @@
 
 @layer base {
   .button {
-    @apply bg-secondary;
+    @apply bg-green-800;
     @apply border;
     @apply cursor-pointer;
     @apply border-border;
-    @apply rounded;
     @apply uppercase;
     @apply font-bold;
     @apply w-fit;
     @apply flex;
     @apply items-center;
-    @apply h-8;
-    @apply px-2;
-    @apply hover:bg-border;
+    @apply px-3;
+    @apply hover:bg-green-900;
+    @apply leading-8;
   }
 
   .cm-editor {
-    @apply h-28;
     @apply border;
-    @apply bg-secondary;
     @apply border-border;
     @apply cursor-text;
   }
 
-  /* Need a custom override for one of the code mirror !important calls */
-  .cm-editor .cm-content .cm-line {
-    @apply caret-gray-300 !important;
-  }
-
-  .cm-editor .cm-selectionBackground {
-    @apply bg-gray-900 !important;
-  }
-
-  .cm-editor .cm-activeLine {
-    @apply bg-border;
-  }
-
-  .cm-editor .cm-gutters {
-    @apply bg-border;
-    @apply text-gray-300;
-    @apply border-0;
-    @apply mr-1;
-  }
-
-  .cm-editor .cm-activeLineGutter {
-    @apply bg-border;
-  }
 
   .icon svg {
     @apply w-4;
     @apply h-4;
 
     @apply fill-gray-300
+  }
+
+  .loader {
+    @apply text-gray-300;
+    @apply h-3;
+    @apply w-3;
+    @apply block;
+    @apply my-8;
+    @apply mx-auto;
+    @apply rounded-full;
+
+    animation: animloader 1.4s linear infinite;
+  }
+
+  h2 {
+    @apply uppercase;
+    @apply text-lg;
+    @apply font-bold;
+    @apply border-b border-border border-dashed;
+  }
+
+  input:not([type="submit"]) {
+    @apply bg-secondary;
+    @apply border border-border;
+    @apply px-2 py-1;
+    @apply mb-4;
+    @apply w-96;
+  }
+
+  input[type="submit"] {
+    @apply button;
+  }
+
+  label {
+    @apply block;
+    @apply mb-1;
+    @apply text-sm font-bold uppercase;
+    @apply text-slate-300;
+  }
+
+  .list-label {
+    @apply font-bold w-40 uppercase;
+  }
+
+  @keyframes animloader {
+    0% {
+      box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+    }
+    25% {
+      box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 2px;
+    }
+    50% {
+      box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 2px,  -38px 0 0 -2px;
+    }
+    75% {
+      box-shadow: 14px 0 0 2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+    }
+    100% {
+      box-shadow: 14px 0 0 -2px,  38px 0 0 2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+    }
   }
 }

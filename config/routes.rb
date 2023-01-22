@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root 'graphs#index'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :graphs
 
-  get 'sparql', to: 'sparql#index'
-  post 'sparql', to: 'sparql#sparql'
+  get '/graphs/:id/query', to: 'graphs#query', as: 'query'
+  get '/graphs/:id/export', to: 'graphs#export', as: 'export'
+  post '/graphs/:id/sparql', to: 'graphs#sparql', as: 'sparql'
 end
