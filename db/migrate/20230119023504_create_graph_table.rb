@@ -4,6 +4,7 @@ class CreateGraphTable < ActiveRecord::Migration[7.0]
     create_table :graphs do |t|
       t.string :name, null: false
       t.string :original_file, null: false
+      t.string :iri, null: false
       t.datetime :generated_at, null: false
 
       t.timestamps

@@ -74,6 +74,12 @@
     @apply font-bold w-40 uppercase;
   }
 
+  /* A bit of custom styling is needed for a nested heirachy to only target children */
+  ul.heirachy ul.heirachy {
+    @apply border-l-2 border-dotted border-slate-300;
+    @apply ml-1 pl-2;
+  }
+
   @keyframes animloader {
     0% {
       box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;

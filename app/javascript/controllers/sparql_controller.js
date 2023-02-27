@@ -3,12 +3,12 @@ import { editor } from "../lib/codemirror";
 
 export default class extends Controller {
   static targets = ["query", "results"];
-  static values = { url: String };
+  static values = { url: String, prefix: String };
 
   connect() {
     this.editor = editor({
       parent: this.queryTarget,
-      doc: "SELECT * WHERE { ?subject ?predicate ?object } LIMIT 5",
+      doc: `${this.prefixValue}SELECT * WHERE { ?subject ?predicate ?object } LIMIT 5`,
     });
   }
 

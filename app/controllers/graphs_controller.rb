@@ -1,5 +1,5 @@
 class GraphsController < ApplicationController
-  before_action :set_graph, only: %w[show destroy query sparql export]
+  before_action :set_graph, only: %w[show destroy query sparql export browse]
 
   def create
     @graph = Graph.new(graph_params)
@@ -11,10 +11,13 @@ class GraphsController < ApplicationController
     end
   end
 
+  def browse
+    @term = params[:term]
+  end
+
   def sparql
     grapher = @graph.grapher
-
-    result = grapher.sparql(params[:query])
+    result  = grapher.sparql(params[:query])
 
     render ResultSetComponent.new(result), layout: false
   end

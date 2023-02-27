@@ -1,15 +1,27 @@
 # Process an RDF file
 class Grapher
-  attr_reader :graph
+  attr_reader :graph, :prefixes
 
   def self.from_file(file)
+    prefixes = {}
+
     graph = RDF::Repository.new do |repository|
-      RDF::Reader.for(:rdf).new(file) do |reader|
+      rdf_reader = RDF::Reader.for(:rdf).new(file) do |reader|
         repository.send(:insert_statements, reader)
 
         nil
       end
+
+      prefixes = rdf_reader.prefixes
+
+      rdf_reader
     end
+
+    new(graph, prefixes:)
+  end
+
+  def self.load_test
+    graph = RDF::Reader.open('mmdb_ontology_rcs.rdf')
 
     new(graph)
   end
@@ -24,8 +36,9 @@ class Grapher
     new(rdf_graph)
   end
 
-  def initialize(graph)
-    @graph = graph
+  def initialize(graph, prefixes: {})
+    @graph    = graph
+    @prefixes = prefixes
   end
 
   def sparql(query)
@@ -35,6 +48,6 @@ class Grapher
     columns = results.variable_names.map(&:to_s)
     rows    = results.map { |row| row.to_h.values.map(&:to_s) }
 
-  { results: results.size, columns:, rows:}
+    { results: results.size, columns:, rows:}
   end
 end
